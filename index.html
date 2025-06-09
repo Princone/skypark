@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Sky Park - Weekend Promo</title>
+    <!-- Attractive Fonts: Playfair Display for headings, Inter for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+        <style>
+        :root {
+            --primary-color: #8C473E; /* A warm, earthy tone from the ad image */
+            --secondary-color: #B29B8C; /* A lighter, complementary tone */
+            --text-dark: #333;
+            --text-light: #f4f4f4;
+            --accent-color: #D4AF37; /* Goldenrod for highlights, like old price strikethrough */
+            --bg-light: #f8f8f8;
+            --bg-white: #ffffff;
+            --button-hover-dark: #6a2e28;
+            --button-hover-accent: #e0b84f;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif; /* Attractive body font */
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-white);
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            max-width: 150px;
+            height: auto;
+            border-radius: 4px; /* Soften logo corners */
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 12px; /* More rounded corners */
+            margin-top: 30px; /* More spacing */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif; /* Attractive heading font */
+            font-size: 3.5em; /* Larger, more impactful */
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle shadow */
+        }
+
+        .hero p {
+            font-size: 1.4em; /* Slightly larger for readability */
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-hero-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+            padding: 18px 45px; /* More generous padding */
+            text-decoration: none;
+            border-radius: 8px; /* Consistent rounded corners */
+            font-size: 1.6em; /* Very prominent */
+            font-weight: 700;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3); /* Deeper shadow */
+            animation: pulse 2s infinite; /* Added animation */
+            border: 2px solid transparent; /* For hover effect */
+        }
+
+        .cta-hero-button:hover {
+            background-color: var(--button-hover-accent); /* Slightly darker gold */
+            transform: translateY(-7px); /* More pronounced lift */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            border-color: var(--primary-color); /* Add border on hover */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        /* Carousel Section */
+        .carousel-section {
+            padding: 40px 0;
+            background-color: var(--bg-light);
+            position: relative; /* For navigation buttons */
+            overflow: hidden; /* Hide overflowing slides */
+        }
+
+        .carousel-container {
+            max-width: 950px; /* Slightly wider */
+            margin: 0 auto;
+            position: relative;
+            height: 450px; /* Increased height */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            overflow: hidden; /* Crucial for carousel effect */
+        }
+
+        .carousel-slides {
+            display: flex;
+            width: 100%; /* Will be managed by JS transform */
+            height: 100%;
+            transition: transform 0.5s ease-in-out; /* Smooth transition */
+            border-radius: 12px;
+        }
+
+        .carousel-slide {
+            min-width: 100%; /* Each slide takes full width */
+            flex-shrink: 0; /* Prevents shrinking */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee; /* Placeholder background */
+            border-radius: 12px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the slide area */
+            border-radius: 12px;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 15px 10px;
+            cursor: pointer;
+            font-size: 1.8em;
+            z-index: 10;
+            border-radius: 8px; /* Rounded buttons */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .carousel-nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-nav-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-nav-btn.next {
+            right: 10px;
+        }
+
+        /* Content Section */
+        .content-section {
+            background-color: var(--bg-white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .content-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .room-offers {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .room-card {
+            background-color: var(--bg-light);
+            border: 1px solid #eee;
+            border-radius: 12px; /* Consistent rounded corners */
+            padding: 25px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px); /* More lift on hover */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .room-card h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 2em; /* Slightly larger room titles */
+            margin-bottom: 10px;
+        }
+
+        .room-card .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1.2em; /* Slightly larger */
+            margin-right: 10px;
+        }
+
+        .room-card .new-price {
+            font-size: 2.2em; /* Larger, more emphasis */
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .why-choose ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .why-choose li {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 30px; /* More space for checkmark */
+            text-align: left; /* Align text left within list item */
+            display: inline-block; /* Allow wrapping */
+            max-width: 80%; /* Limit width for centering effect */
+        }
+        .why-choose li::before {
+            content: '✅'; /* Clearer checkmark */
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+
+        .promo-expiration {
+            text-align: center;
+            font-size: 1.5em; /* Increased size for urgency */
+            font-weight: 700;
+            color: #D32F2F; /* Red color for urgency */
+            margin-top: 40px; /* More spacing */
+            padding: 15px;
+            background-color: #ffebee; /* Light red background */
+            border-radius: 8px;
+            animation: blink 1.5s infinite; /* Added blinking animation */
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* Location */
+        .location-section {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .location-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .location-section p {
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+            padding: 25px 0; /* More padding */
+            font-size: 0.95em;
+            border-top: 1px solid #555;
+        }
+
+        footer .footer-logo {
+            max-width: 90px; /* Slightly larger logo */
+            margin-bottom: 15px;
+        }
+
+        footer a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 12px; /* More spacing */
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-color); /* Highlight on hover */
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .cta-hero-button {
+                font-size: 1.4em;
+                padding: 15px 35px;
+            }
+
+            .content-section, .location-section {
+                padding: 30px 15px;
+            }
+
+            .carousel-container {
+                height: 350px; /* Adjust height for smaller screens */
+                max-width: 100%; /* Allow full width on smaller screens */
+            }
+
+            .room-offers {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .room-card {
+                width: 90%;
+                max-width: none;
+            }
+
+            .content-section h2, .location-section h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .cta-hero-button {
+                width: 90%;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 1.3em;
+            }
+
+            .carousel-container {
+                height: 250px; /* Further adjust height for mobile */
+            }
+
+            .carousel-nav-btn {
+                padding: 10px 5px;
+                font-size: 1.5em;
+            }
+
+            .room-card h3 {
+                font-size: 1.8em;
+            }
+
+            .room-card .new-price {
+                font-size: 2em;
+            }
+
+            .promo-expiration {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+
+    <header>
+        <div class="container">
+            <img src="logo.jpeg" alt="Hotel Sky Park Logo" class="logo">
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Escape the Summer Heat: Weekend Getaways at Hotel Sky Park!</h1>
+                <p>Unwind and recharge with our exclusive "Summer Sendoff Stays" promo. Limited-time offers available until June 30th, 2025!</p>
+                <!-- Linked directly to Google Form URL -->
+                <a href="https://forms.gle/pigcM2eQ1iy5AohU9" target="_blank" class="cta-hero-button" id="bookNowHero">Book Now!</a>
+                <p class="phone-call-info" style="color: var(--text-light); margin-top: 20px;">Prefer to call? Dial <a href="tel:9849118778" style="color: var(--accent-color);">9849118778</a></p>
+            </div>
+        </section>
+
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carouselSlides">
+                    <!-- Replace with actual image paths, using placeholders here -->
+                    <div class="carousel-slide"><img src="1.jpeg" alt="Hotel Room 1 - Elegant View"></div>
+                    <div class="carousel-slide"><img src="2.jpeg" alt="Hotel Room 2 - Comfortable Stay"></div>
+                    <div class="carousel-slide"><img src="3.jpeg" alt="Hotel Room 3 - Peaceful Retreat"></div>
+                     <div class="carousel-slide"><img src="4.jpeg" alt="Hotel Room 3 - Peaceful Retreat"></div>
+                </div>
+                <button class="carousel-nav-btn prev" id="prevBtn">&#10094;</button> <!-- Left arrow -->
+                <button class="carousel-nav-btn next" id="nextBtn">&#10095;</button> <!-- Right arrow -->
+            </div>
+        </section>
+
+        <section class="content-section container">
+            <h2>Your Perfect Weekend Escape Awaits!</h2>
+            <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em;">At Hotel Sky Park, we believe in creating memorable experiences. This summer, treat yourself to a refreshing getaway with our special weekend promotions. Whether you're looking for luxury, comfort, or value, we have a room just for you.</p>
+
+            <h3 style="text-align: center; color: var(--primary-color); font-size: 1.6em; margin-bottom: 25px;">Our Exclusive "Summer Sendoff Stays" Offer Includes:</h3>
+            <div class="room-offers">
+                <div class="room-card">
+                    <h3>Platinum Room</h3>
+                    <p style="margin-bottom: 4px;">Experience ultimate comfort.</p>
+                    <p><span class="old-price">$2399</span> <span class="new-price">Now $1999</span></p>
+                </div>
+                <!-- Swapped Golden and Silver Room names and prices -->
+                <div class="room-card">
+                    <h3>Golden Room</h3>
+                    <p style="margin-bottom: 5px;">Your cozy retreat.</p>
+                    <p><span class="old-price">$1499</span> <span class="new-price">Now $999</span></p>
+                </div>
+                <div class="room-card">
+                    <h3>Silver Room</h3>
+                    <p style="margin-bottom: 5px;">The perfect blend of value and comfort.</p>
+                    <p><span class="old-price">$999</span> <span class="new-price">Now $799</span></p>
+                </div>
+            </div>
+
+            <div class="why-choose">
+                <h3 style="text-align: center; color: var(--primary-color); font-size: 1.6em; margin-bottom: 25px;">Why Choose Hotel Sky Park?</h3>
+                <ul>
+                    <li>Comfortable and Hygenic rooms</li>
+                    <li>Relaxing ambiance</li>
+                    <li>Conveniently located</li>
+                    <li>24/7-TV-WIFI-MINERAL WATER</li>
+                </ul>
+            </div>
+
+            <p class="promo-expiration" id="promoExpirationText">**HURRY! LIMITED TIME OFFER!** This incredible deal ends on **June 30th, 2025**. Don't miss your chance to relax and save!</p>
+        </section>
+
+        <section class="location-section container">
+            <h2>Find Us Easily!</h2>
+            <p>Hotel Sky Park is conveniently located at:<br>
+            **Near D-Mart, Suresh Nagar, Kakinada**</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <img src="logo.jpeg" alt="Hotel Sky Park Footer Logo" class="footer-logo">
+            <p>&copy; 2025 Hotel Sky Park. All rights reserved.</p>
+            <p>
+                <a href="#">Privacy Policy</a> |
+                <a href="#">Terms & Conditions</a>
+            </p>
+        </div>
+    </footer>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Carousel Functionality ---
+            const slidesContainer = document.getElementById('carouselSlides');
+            const slides = slidesContainer.children;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentIndex = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            function updateCarousel() {
+                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            });
+
+            // Touch event listeners for swipe
+            slidesContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                clearInterval(autoPlayInterval); // Pause auto-play on touch
+            });
+
+            slidesContainer.addEventListener('touchmove', (e) => {
+                touchEndX = e.touches[0].clientX;
+            });
+
+            slidesContainer.addEventListener('touchend', () => {
+                const swipeThreshold = 50; // Minimum pixels to count as a swipe
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swiped left, go to next slide
+                    nextBtn.click();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swiped right, go to previous slide
+                    prevBtn.click();
+                }
+                // Resume auto-play after a short delay
+                autoPlayInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 5000);
+            });
+
+
+            // Optional: Auto-play carousel
+            let autoPlayInterval = setInterval(() => {
+                nextBtn.click();
+            }, 5000); // Change slide every 5 seconds
+
+            // Pause auto-play on hover (for mouse users)
+            slidesContainer.parentElement.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+            slidesContainer.parentElement.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 5000);
+            });
+
+
+            // --- Promo Expiry Logic ---
+            const promoEndDate = new Date('2025-06-30T23:59:59'); // Promo ends on June 30, 2025, end of day
+            const now = new Date();
+            const promoExpirationElement = document.getElementById('promoExpirationText');
+            const bookNowHeroButton = document.getElementById('bookNowHero');
+
+            const daysRemaining = Math.ceil((promoEndDate - now) / (1000 * 60 * 60 * 24));
+
+            if (daysRemaining > 0) {
+                if (daysRemaining <= 7) {
+                    promoExpirationElement.innerHTML = `**HURRY! ONLY ${daysRemaining} DAY(S) LEFT!** This incredible deal ends on **June 30th, 2025**. Don't miss your chance to relax and save!`;
+                }
+                // If more than 7 days, the default message in HTML remains
+            } else {
+                promoExpirationElement.innerHTML = `**PROMO HAS EXPIRED!** This special offer ended on June 30th, 2025. Please check back for new promotions or call us for current rates.`;
+                promoExpirationElement.style.color = '#888'; // Change color to less urgent
+                promoExpirationElement.style.animation = 'none'; // Stop blinking
+                if(bookNowHeroButton) {
+                    bookNowHeroButton.style.display = 'none'; // Hide book now button
+                    // Optionally, update the link to a generic inquiry form or phone number if the promo is over
+                    // bookNowHeroButton.href = 'tel:9849118778';
+                    // bookNowHeroButton.textContent = 'Call for Rates';
+                    // bookNowHeroButton.style.display = 'inline-block'; // Show if changing to call
+                }
+                // Consider hiding the entire offer section or showing a different message if expired
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Carousel Functionality ---
+            const slidesContainer = document.getElementById('carouselSlides');
+            const slides = slidesContainer.children;
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentIndex = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            function updateCarousel() {
+                slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            });
+
+            // Touch event listeners for swipe
+            slidesContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                clearInterval(autoPlayInterval); // Pause auto-play on touch
+            });
+
+            slidesContainer.addEventListener('touchmove', (e) => {
+                touchEndX = e.touches[0].clientX;
+            });
+
+            slidesContainer.addEventListener('touchend', () => {
+                const swipeThreshold = 50; // Minimum pixels to count as a swipe
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swiped left, go to next slide
+                    nextBtn.click();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swiped right, go to previous slide
+                    prevBtn.click();
+                }
+                // Resume auto-play after a short delay
+                autoPlayInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 5000);
+            });
+
+
+            // Optional: Auto-play carousel
+            let autoPlayInterval = setInterval(() => {
+                nextBtn.click();
+            }, 5000); // Change slide every 5 seconds
+
+            // Pause auto-play on hover (for mouse users)
+            slidesContainer.parentElement.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+            });
+            slidesContainer.parentElement.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    nextBtn.click();
+                }, 5000);
+            });
+
+
+            // --- Promo Expiry Logic ---
+            const promoEndDate = new Date('2025-06-30T23:59:59'); // Promo ends on June 30, 2025, end of day
+            const now = new Date();
+            const promoExpirationElement = document.getElementById('promoExpirationText');
+            const bookNowHeroButton = document.getElementById('bookNowHero');
+
+            const daysRemaining = Math.ceil((promoEndDate - now) / (1000 * 60 * 60 * 24));
+
+            if (daysRemaining > 0) {
+                if (daysRemaining <= 7) {
+                    promoExpirationElement.innerHTML = `**HURRY! ONLY ${daysRemaining} DAY(S) LEFT!** This incredible deal ends on **June 30th, 2025**. Don't miss your chance to relax and save!`;
+                }
+                // If more than 7 days, the default message in HTML remains
+            } else {
+                promoExpirationElement.innerHTML = `**PROMO HAS EXPIRED!** This special offer ended on June 30th, 2025. Please check back for new promotions or call us for current rates.`;
+                promoExpirationElement.style.color = '#888'; // Change color to less urgent
+                promoExpirationElement.style.animation = 'none'; // Stop blinking
+                if(bookNowHeroButton) {
+                    bookNowHeroButton.style.display = 'none'; // Hide book now button
+                    // Optionally, update the link to a generic inquiry form or phone number if the promo is over
+                    // bookNowHeroButton.href = 'tel:9849118778';
+                    // bookNowHeroButton.textContent = 'Call for Rates';
+                    // bookNowHeroButton.style.display = 'inline-block'; // Show if changing to call
+                }
+                // Consider hiding the entire offer section or showing a different message if expired
+            }
+        });
+    </script>
+
+</body>
+</html>
